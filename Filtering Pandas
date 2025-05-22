@@ -1,0 +1,37 @@
+import pandas as pd
+
+df = pd.read_csv("C:\\Users\\DELL\\.spyder-py3\\world_population.csv")
+
+print(df[df['Rank']<= 10 ])
+
+specific_countries = ['Bangladesh', 'Brazil']
+df[df['Country'].isin(specific_countries)]
+#another way
+df[df['Country'].str.contains('United')]
+
+
+#Sort data by country column (A to Z)
+df2 = df.set_index('Country')
+print(df2)
+
+print(df2.filter(items = ['Continent', 'CCA3']))
+
+#axis = 0: It means searching in the horizontal axis, so it gives me the rows that contain the two words, and thus the output is the heading row.
+print(df2.filter(items = ['Continent', 'CCA3'], axis = 0))
+print(df2.filter(like = 'United', axis = 0))
+
+#axis = 1: It means searching in the vertical axis, so it gives me the columns that contain the two words, and thus the output is the two columns whose titles are these two words.
+print(df2.filter(items = ['Continent', 'CCA3'], axis = 1))
+
+#Sort ascendingly according to the order column (we only sorted the first 10 for viewing/the entire table can be sorted)
+print(df[df['Rank']< 10].sort_values(by='Rank'))
+
+#another way
+print(df[df['Rank']< 10].sort_values(by='Rank', ascending = True))
+
+#descending sort
+print(df[df['Rank']< 10].sort_values(by='Rank', ascending = False))
+
+print(df[df['Rank']< 10].sort_values(by=['Continent', 'Country'], ascending = False))
+
+print(df[df['Rank']< 10].sort_values(by=['Continent', 'Country'], ascending = [False,True]))
