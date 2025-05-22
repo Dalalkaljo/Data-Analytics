@@ -1,0 +1,39 @@
+import pandas as pd
+
+df = pd.read_csv("C:\\Users\\DELL\\.spyder-py3\\countries of the world.csv")
+df = pd.read_table("C:\\Users\\DELL\\.spyder-py3\\countries of the world.csv", sep=',')
+
+
+pd.read_csv("C:\\Users\\DELL\\.spyder-py3\\countries of the world.csv", header=None)
+pd.read_csv("C:\\Users\\DELL\\.spyder-py3\\countries of the world.csv", header=None, names=['country', 'region'])
+
+df = pd.read_csv("C:\\Users\\DELL\\.spyder-py3\\countries of the world.txt", sep = '\t')
+df = pd.read_table("C:\\Users\\DELL\\.spyder-py3\\countries of the world.txt")
+
+df = pd.read_excel("C:\\Users\\DELL\\.spyder-py3\\world_population_excel_workbook.xlsx")
+df = pd.read_excel("C:\\Users\\DELL\\.spyder-py3\\world_population_excel_workbook.xlsx", sheet_name='Sheet1')
+
+df = pd.read_json("C:\\Users\\DELL\\.spyder-py3\\json_sample.json")
+
+pd.set_option('display.max.rows', 234)
+print(df)
+
+#specially json file
+pd.set_option('display.max.columns', 40)
+print(df)
+
+#summary of table(data)
+df.info()
+
+
+df.shape
+
+df.head(10)
+df.tail(10)
+
+#slice only one column
+df['CCA3']
+
+#DataFrame
+songs = {'album': ["thriller", "calm down"], "released": [1982,2023]}
+songs_frame = pd.DataFrame(songs)
